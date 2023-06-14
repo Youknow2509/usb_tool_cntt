@@ -1,0 +1,1 @@
+Do dai duong gap khuc qua cac diem tu 1, 2, 3, ..., n la: 8.000000

@@ -1,0 +1,2 @@
+Nghiệm gần đúng thứ 2 là: 0
+Sai số của nghiệm: 27.125
