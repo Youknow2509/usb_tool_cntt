@@ -5,7 +5,7 @@ using namespace std;
 
 double f(double x) {
     // Định nghĩa hàm f(x) của phương trình
-    return x * x - 4;
+    return x*x*x + 4*x*x - 10;
 }
 
 double bisectionMethod(double a, double b, double epsilon) {
@@ -40,10 +40,10 @@ double bisectionMethod(double a, double b, double epsilon) {
 
 int main() {
 
-    #ifndef ONLINE_JUDGE
-    freopen("/Users/v/code/Algorithm_and_proglem_day/giai_tich_so/main/Show_screen/INP.TXT", "r", stdin);
-    freopen("/Users/v/code/Algorithm_and_proglem_day/giai_tich_so/main/Show_screen/OUT.TXT", "w", stdout);
-    #endif
+    #ifndef ONlINE_JUDGE
+	freopen("Show_screen/INP.TXT", "r", stdin);
+	freopen("Show_screen/OUT.TXT", "w", stdout);
+	#endif 
 
     double a;       // Điểm đầu của đoạn [a, b]
     double b;       // Điểm cuối của đoạn [a, b]

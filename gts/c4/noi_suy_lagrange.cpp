@@ -19,7 +19,6 @@ double interpolateLagrange(double x, const std::vector<Point>& points) {
                 term *= (x - points[j].x) / (points[i].x - points[j].x);
             }
         }
-
         result += term;
     }
 
@@ -28,11 +27,6 @@ double interpolateLagrange(double x, const std::vector<Point>& points) {
 
 int main() {
 
-    #ifndef ONLINE_JUDGE
-    freopen("/Users/v/code/Algorithm_and_proglem_day/giai_tich_so/main/Show_screen/INP.TXT", "r", stdin);
-    freopen("/Users/v/code/Algorithm_and_proglem_day/giai_tich_so/main/Show_screen/OUT.TXT", "w", stdout);
-    #endif
-
     int n; // Co n diem
 
     cin >> n;
@@ -40,7 +34,10 @@ int main() {
     std::vector<Point> points(n);
 
     for (int i = 0; i < n; i++){
-        cin >> points[i].x >> points[i].y;
+        cin >> points[i].x;
+    }
+    for (int i = 0; i < n; i++){
+        cin >> points[i].y;
     }
 
     double x; // Giá trị x cần nội suy

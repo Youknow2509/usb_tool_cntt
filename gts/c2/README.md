@@ -18,4 +18,9 @@
 => Để tính tích phân theo công thức hình thang, chúng ta sẽ chia miền tích phần thành thật nhiều hình thang thì sai số sẽ càng nhỏ, rôì dùng vòng lập để tính.
 
 # Tính tích phân bằng phương pháp Simson: 
-
+![Alt text](img/simson1.png)
+![Alt text](img/simson2.png)
+![Alt text](img/simson3.png)
+![Alt text](img/simson4.png)
+- *Chú ý việc chia phần tích phân thành nhiều phần nhỏ phải là một số chẵn.*
+  

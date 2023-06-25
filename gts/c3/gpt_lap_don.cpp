@@ -1,48 +1,47 @@
-
-#include <bits/stdc++.h>
+#include <iostream>
+#include <cmath>
 
 using namespace std;
 
-double f(double x) {
-    // Định nghĩa hàm f(x) của phương trình
+double equation(double x) {
+    // Hàm này đại diện cho phương trình cần giải
+    // Thay đổi phương trình theo yêu cầu của bạn
     return x * x - 4;
 }
 
-double derivative(double x) {
-    // Định nghĩa hàm f'(x) (đạo hàm của f(x))
-    return 2 * x;
-}
-
-double newtonRaphsonMethod(double x0, double epsilon, int maxIterations) {
-    double x = x0;
-    int iteration = 0;
-
-    while (std::abs(f(x)) >= epsilon && iteration < maxIterations) {
-        x = x - f(x) / derivative(x);
-        iteration++;
+double fixedPointIteration(double initialGuess, double epsilon, int maxIterations) {
+    double currentX = initialGuess;
+    double nextX;
+    int iterations = 0;
+    
+    while (iterations < maxIterations) {
+        nextX = equation(currentX); // Áp dụng công thức lặp
+        if (abs(nextX - currentX) < epsilon) {
+            return nextX; // Kết quả gần đúng
+        }
+        currentX = nextX;
+        iterations++;
     }
-
-    std::cout << "Số lần lặp: " << iteration << std::endl;
-
-    return x;
+    
+    return nextX; // Kết quả gần đúng sau số lần lặp tối đa
 }
 
 int main() {
-
-    #ifndef ONLINE_JUDGE
-    freopen("/Users/v/code/Algorithm_and_proglem_day/giai_tich_so/main/Show_screen/INP.TXT", "r", stdin);
-    freopen("/Users/v/code/Algorithm_and_proglem_day/giai_tich_so/main/Show_screen/OUT.TXT", "w", stdout);
-    #endif
-
-    double x0;       // Điểm ban đầu x0
-    double epsilon;  // Sai số epsilon
-    int maxIterations; // Số lần lặp tối đa
-
-    cin >> x0 >> epsilon >> maxIterations;
-
-    double root = newtonRaphsonMethod(x0, epsilon, maxIterations);
-
-    std::cout << "Nghiệm của phương trình: " << root << std::endl;
-
+    double initialGuess, epsilon;
+    int maxIterations;
+    
+    cout << "Nhập giá trị ban đầu: ";
+    cin >> initialGuess;
+    
+    cout << "Nhập độ chính xác epsilon: ";
+    cin >> epsilon;
+    
+    cout << "Nhập số lần lặp tối đa: ";
+    cin >> maxIterations;
+    
+    double result = fixedPointIteration(initialGuess, epsilon, maxIterations);
+    
+    cout << "Nghiệm gần đúng của phương trình là: " << result << endl;
+    
     return 0;
 }
