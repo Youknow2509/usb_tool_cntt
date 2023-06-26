@@ -21,14 +21,14 @@ double integrate(double (*f)(double), double a, double b, int n) {
 
 // Hàm số mẫu để tính tích phân
 double sampleFunction(double x) {
-    return abs(pow(sin(x), 4) + pow(x, 3)); // Ví dụ: hàm số x^2
+    return sin(x*x)/(x*x*x + 3); // Ví dụ: hàm số x^2
 }
 
 int main() {
 
     #ifndef ONLINE_JUDGE
-    freopen("/Users/v/code/Algorithm_and_proglem_day/giai_tich_so/main/Show_screen/INP.TXT", "r", stdin);
-    freopen("/Users/v/code/Algorithm_and_proglem_day/giai_tich_so/main/Show_screen/OUT.TXT", "w", stdout);
+    freopen("INP.TXT", "r", stdin);
+    freopen("OUT.TXT", "w", stdout);
     #endif
 
     double a; // Giới hạn dưới của đoạn tích phân

@@ -5,12 +5,12 @@ using namespace std;
 
 double f(double x) {
     // Định nghĩa hàm f(x) của phương trình
-    return x * x - 4;
+    return pow(M_E, x) + sin(x) - 5*x - 7;
 }
 
 double derivative(double x) {
     // Định nghĩa hàm f'(x) (đạo hàm của f(x))
-    return 2 * x;
+    return pow(M_E, x) + cos(x) - 5;
 }
 
 double newtonMethod(double x0, double epsilon, int maxIterations) {
@@ -31,8 +31,8 @@ double newtonMethod(double x0, double epsilon, int maxIterations) {
 int main() {
 
     #ifndef ONLINE_JUDGE
-    freopen("/Users/v/code/Algorithm_and_proglem_day/giai_tich_so/main/Show_screen/INP.TXT", "r", stdin);
-    freopen("/Users/v/code/Algorithm_and_proglem_day/giai_tich_so/main/Show_screen/OUT.TXT", "w", stdout);
+    freopen("INP.TXT", "r", stdin);
+    freopen("OUT.TXT", "w", stdout);
     #endif
 
     double x0;       // Điểm ban đầu x0

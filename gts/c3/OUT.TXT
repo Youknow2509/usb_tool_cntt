@@ -1,0 +1,2 @@
+Số lần lặp: 9
+Nghiệm của phương trình: 3.11591

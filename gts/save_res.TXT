@@ -1,4 +1,4 @@
-1. Tích phân của hàm số từ 2 đến 6 là: 321.386
-2. Số lần lặp: 15
-Nghiệm của phương trình: 2.81712
-3. -4.95599711928
+1. Nghiem cua ma tran: 2.00003 -3.00008 1.00001 
+2. Số lần lặp: 9
+Nghiệm của phương trình: 3.11591
+3. Tích phân của hàm số từ 2 đến 5 là: -0.0185126
