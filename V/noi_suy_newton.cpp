@@ -37,10 +37,10 @@ vector<double> nhap(int n){
 
 int main(){
 
-    #ifndef ONLINE_JUDGE
+    /* #ifndef ONLINE_JUDGE
     freopen("INP.TXT", "r", stdin);
     freopen("OUT.TXT", "w", stdout);
-    #endif
+    #endif */
 
     int n;  cin >> n;
     vector<double> x(n), y(n);

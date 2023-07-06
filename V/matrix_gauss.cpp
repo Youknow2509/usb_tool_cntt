@@ -4,55 +4,67 @@
 
 using namespace std;
 
-void nhap_du_lieu(vector<vector<double> >&A, vector<double> &B, int n){
+vector<vector<double> > input_vt_A(int n){
+    vector<vector<double> > A(n, vector<double>(n));
     for (int i = 0; i < n; i++){
         for (int j = 0; j < n; j++){
             cin >> A[i][j];
         }
     }
+    return A;
+}
+
+vector<double> input_vt_B(int n){
+    vector<double> B(n);
     for (int i = 0; i < n; i++){
         cin >> B[i];
     }
+    return B;
 }
 
-vector<double> solve_gauss (vector<vector<double> > A, vector<double> B, int n){
-    vector<vector<double> > C(n, vector<double>(n + 1, 0));
-    vector<double> res(n, 0);
-    double he_so = 0, s = 0;
-    // Tạo ma trận mở rộng C.
+vector<vector<double> > tao_ma_tran_mo_rong_bac_thang(int n, vector<vector<double> > A, vector<double> B){
+    vector<vector<double> > res(n, vector<double>(n + 1));
+    double he_so = 0;
+    // Tao ma tran mo rong
     for (int i = 0; i < n; i++){
         for (int j = 0; j < n + 1; j++){
-            if (j == n){
-                C[i][j] = B[i];
+            if (j < n){
+                res[i][j] = A[i][j];
             }
             else{
-                C[i][j] = A[i][j];
+                res[i][j] = B[i];
             }
         }
     }
-    // Biến đổi ma trận C thành ma trận hình thang
+    // Khu gauss
     for (int k = 0; k < n - 1; k++){
         for (int i = k + 1; i < n; i++){
-            he_so = C[i][k]/C[k][k];
+            he_so = res[i][k]/res[k][k];
             for (int j = 0; j < n + 1; j++){
-                C[i][j] -= he_so*C[k][j];
+                res[i][j] -= he_so*res[k][j];
             }
         }
-    }
-    // Tìm nghiệm 
-    for (int i = n - 1; i >= 0; i--){
-        s = 0;
-        for (int j = i + 1; j < n; j++){
-            s += res[j]*C[i][j];
-        }
-        res[i] = (C[i][n] - s)/C[i][i];
     }
     return res;
 }
 
-void in_nghiem (vector<double>X, int n){
+vector<double> solve(int n, vector<vector<double> > A, vector<double> B){
+    vector<vector<double> > matrix = tao_ma_tran_mo_rong_bac_thang(n, A, B);
+    vector<double> res(n);
+    double temp, x;
+    for (int i = n - 1; i >= 0; i--){
+        temp = 0;
+        for (int j = i + 1; j < n; j++){
+            temp += res[j]*matrix[i][j];
+        }
+        res[i] = (matrix[i][n] - temp)/matrix[i][i];
+    }
+    return res;
+}
+
+void in_vt(int n, vector<double> res){
     for (int i = 0; i < n; i++){
-        cout << X[i] << " ";
+        cout << res[i] << " ";
     }
     cout << endl;
 }
@@ -60,21 +72,19 @@ void in_nghiem (vector<double>X, int n){
 int main(){
 
     #ifndef ONLINE_JUDGE
-    freopen("INP.TXT", "r",stdin);
-    freopen("OUT.TXT", "w", stdout);
+    freopen("INP.TXT", "r", stdin);
     #endif
 
-    int size_matrix; cin >> size_matrix;
-    vector<vector<double> > A(size_matrix, vector<double> (size_matrix));
-    vector<double> B(size_matrix), x(size_matrix);
-    
-    nhap_du_lieu(A, B, size_matrix);
+    int n; cin >> n;
+    vector<vector<double> > A(n, vector<double>(n));
+    vector<double> B(n);
 
-    x = solve_gauss(A, B, size_matrix);
+    A = input_vt_A(n);
+    B = input_vt_B(n);
 
-    cout << "Nghiem cua pt: Ax = B la: ";
+    cout << "Matrix nghiem la: " << endl;
 
-    in_nghiem(x, size_matrix);
+    in_vt(n, solve(n, A, B));
 
     return 0;
 }
